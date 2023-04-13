@@ -1,6 +1,10 @@
-const VALUES_TO_SORT = [9, 4, 7, 1, 5, 3, 8, 2, 6];
+const { performance } = require('perf_hooks');
+
 const insertSort = (valuesToSort) => {
-    // const lenghtValues = valuesToSort.length;
+
+    // Iniciar el contador de rendimiento
+    const performanceStart = performance.now();
+
     for (let i = 1; i < valuesToSort.length; i++) {
         let j;
 		let currentVale = valuesToSort[i];
@@ -12,7 +16,13 @@ const insertSort = (valuesToSort) => {
 
     }
 
+    // Finalizar el contador de rendimiento
+    const performanceEnd = performance.now();
+    const performanceDuration = performanceEnd - performanceStart;
+
+    console.log(`Tiempo de ejecución insertSort: ${performanceDuration} milisegundos`);
+
     return valuesToSort;
 }
 
-console.log(insertSort(VALUES_TO_SORT));
+module.exports = insertSort;

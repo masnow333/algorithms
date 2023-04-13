@@ -1,6 +1,9 @@
-const VALUES_TO_SORT = [9, 4, 7, 1, 5, 3, 8, 2, 6];
+const { performance } = require('perf_hooks');
 
 const combSort = (valuesToSort) => {
+
+    // Iniciar el contador de rendimiento
+    const performanceStart = performance.now();
 
     let round = Math.round( valuesToSort.length / 1.3);
 
@@ -25,7 +28,13 @@ const combSort = (valuesToSort) => {
 
     }
 
+    // Finalizar el contador de rendimiento
+    const performanceEnd = performance.now();
+    const performanceDuration = performanceEnd - performanceStart;
+
+    console.log(`Tiempo de ejecución combSort: ${performanceDuration} milisegundos`);
+
     return valuesToSort;
 }
 
-console.log(combSort(VALUES_TO_SORT))
+module.exports = combSort;
